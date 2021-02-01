@@ -16,8 +16,12 @@ app.get( '/', ( req, res ) => {
 
 io.of( '/stream' ).on( 'connection', stream );
 
-console.log('Node app listening at http://localhost:3000');
+const PORT = process.env.PORT || 5000  # Fall back to port 5000 if process.env.PORT is not set
 
-server.listen( 3000 );
+express()
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  
+
+server.listen( PORT );
 
 
